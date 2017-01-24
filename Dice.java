@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Dice {
 
-	int Value = 0;
+	private int value = 0;
 	Random r = new Random();
-	final int Sides = 6;
+	final int SIDES = 6;
 
 	public void Random() {
 		Value = (r.nextInt(Sides) + 1);
