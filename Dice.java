@@ -9,11 +9,11 @@ public class Dice {
 	final int SIDES = 6;
 
 	public void Random() {
-		Value = (r.nextInt(Sides) + 1);
+		value = (r.nextInt(Sides) + 1);
 	}
 
 	public int Roll() {
 		Random();
-		return Value;
+		return value;
 	}
 }
