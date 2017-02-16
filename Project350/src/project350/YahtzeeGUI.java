@@ -18,21 +18,21 @@ public class YahtzeeGUI {
 	
 	public void ScoreBoxes(){
 		ones = new JTextArea();
-		ones.setSize(100,20);
 		guiFrame.add(ones);
+		ones.setSize(100,20);
 		
 		twos = new JTextArea();
-		twos.setSize(100,20);
 		guiFrame.add(twos);
+		twos.setSize(100,20);
 		
 		threes = new JTextArea();
-		threes.setSize(100,20);
 		guiFrame.add(threes);
+		threes.setSize(100,20);
 		
 		fours = new JTextArea();
-		fours.setSize(100,20);
 		guiFrame.add(fours);
-		//hello
+		fours.setSize(100,20);
+		
 		
 	}
 }

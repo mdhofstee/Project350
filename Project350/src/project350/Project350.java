@@ -6,5 +6,6 @@ public class Project350 {
 		Yahtzee game = new Yahtzee();
 		YahtzeeGUI board = new YahtzeeGUI();
 		Yahtzee.run(game, board);		
+		board.load();
 	}	
 }
