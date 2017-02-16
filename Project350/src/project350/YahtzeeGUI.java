@@ -6,7 +6,7 @@ import java.awt.*;
 public class YahtzeeGUI {
 	
 	JFrame guiFrame = new JFrame();
-	JTextArea ones, twos, threes;
+	JTextArea ones, twos, threes, fours;
 	public void load(){
 		
 		guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,5 +28,11 @@ public class YahtzeeGUI {
 		threes = new JTextArea();
 		threes.setSize(100,20);
 		guiFrame.add(threes);
+		
+		fours = new JTextArea();
+		fours.setSize(100,20);
+		guiFrame.add(fours);
+		//hello
+		
 	}
 }
