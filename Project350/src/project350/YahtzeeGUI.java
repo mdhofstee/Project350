@@ -1,87 +1,131 @@
-package project350;
+package project.cis350;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
-import java.awt.*;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * 
+ * @author Overman, Hofstee
+ *
+ */
 public class YahtzeeGUI implements ActionListener {
+	/**
+	 * The frame of the GUI.
+	 */
+	private JFrame guiFrame = new JFrame();
+	/**
+	 * 
+	 */
+	private String[] options = {"Dice 1", "Dice 2", "Dice 3", "Dice 4", "Dice 5" };
+	/**
+	 * 
+	 */
+	private int size =  Integer.parseInt(JOptionPane.showInputDialog("Number of Players?"));
+	/**
+	 * 
+	 */
+	private JButton[][] buttons  = new JButton[21][size + 1];
+	/**
+	 * 
+	 */
+	private Border border = BorderFactory.createLineBorder(Color.BLACK);
+	/**
+	 * 
+	 */
+	private int[] rolls = new int[5];
+	/**
+	 * 
+	 */
+	private int playerturn = 1;
+	/**
+	 * 
+	 */
+	private Player[] players = new Player[size];
+	/**
+	 * 
+	 */
+	private final JCheckBox checkBox1 = new JCheckBox();
+	/**
+	 * 
+	 */
+	private final JCheckBox checkBox2 = new JCheckBox();
+	/**
+	 * 
+	 */
+	private final JCheckBox checkBox3 = new JCheckBox();
+	/**
+	 * 
+	 */
+	private final JCheckBox checkBox4 = new JCheckBox();
+	/**
+	 * 
+	 */
+	private final JCheckBox checkBox5 = new JCheckBox();
 	
-	JFrame guiFrame = new JFrame();
-	String[] options = { "Dice 1", "Dice 2", "Dice 3", "Dice 4", "Dice 5" };
-	int size =  Integer.parseInt(JOptionPane.showInputDialog("Number of Players?"));
-	JButton[][] buttons  = new JButton[21][size + 1];
-	Border border = BorderFactory.createLineBorder(Color.BLACK);
-	int rolls[] = new int[5];
-	int playerturn = 1;
-	Player[] players = new Player[size];
-	
-	final JCheckBox checkBox1 = new JCheckBox();
-	final JCheckBox checkBox2 = new JCheckBox();
-	final JCheckBox checkBox3 = new JCheckBox();
-	final JCheckBox checkBox4 = new JCheckBox();
-	final JCheckBox checkBox5 = new JCheckBox();
-	
-	
-	
-	public void load(){
+	/**
+	 * 
+	 */
+	public void load() {
 		guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		guiFrame.setTitle("Yahtzee!");
-		guiFrame.setSize(1080,970);
+		guiFrame.setSize(1080, 970);
 		guiFrame.setLayout(new GridLayout(21, size + 1));
 		guiFrame.setVisible(true);
 		
-		for(int i = 0; i < size;i++){
+		for (int i = 0; i < size; i++) {
 			players[i] = new Player();
 			System.out.println(players[i]);
 		}
-		
-		ScoreBoxes();
-		Labels();
+		scoreBoxes();
+		labels();
 	}
 	
-	public void ScoreBoxes(){
-		
-		for (int r = 0; r < 21; r++){
-            for (int c = 0; c < size + 1; c++){         
+	/**
+	 * 
+	 */
+	public void scoreBoxes() {
+		for (int r = 0; r < 21; r++) {
+            for (int c = 0; c < size + 1; c++) {         
                 buttons[r][c] = new JButton("0");
-                buttons[r][c].setPreferredSize(new Dimension(100,30));
+                buttons[r][c].setPreferredSize(new Dimension(100, 30));
                 buttons[r][c].addActionListener(this);
                 guiFrame.add(buttons[r][c]);
             }
         }  
 		guiFrame.pack();
 	}
-	
-	public void Labels(){
-		
+
+	/**
+	 * 
+	 */
+	public void labels() {
 		buttons[0][0].setText("Players: "); 
-		buttons[0][0].setEnabled(false);
-		
-		for(int i = 1; i < size + 1; i++){
+		buttons[0][0].setEnabled(false);		
+		for (int i = 1; i < size + 1; i++) {
 			buttons[0][i].setText("Player " + i);
 			buttons[0][i].setEnabled(false);
 		}
-		
 		buttons[1][0].setText("Aces: ");
 		buttons[1][0].setEnabled(false);
-		
 		buttons[2][0].setText("Twos: ");
 		buttons[2][0].setEnabled(false);
-		
 		buttons[3][0].setText("Threes: ");
 		buttons[3][0].setEnabled(false);
-		
 		buttons[4][0].setText("Fours: ");
 		buttons[4][0].setEnabled(false);
-		
 		buttons[5][0].setText("Fives: ");
-		buttons[5][0].setEnabled(false);
-		
+		buttons[5][0].setEnabled(false);	
 		buttons[6][0].setText("Sixes: ");
 		buttons[6][0].setEnabled(false);
-		
 		buttons[7][0].setText("Total Score: ");
 		buttons[7][0].setEnabled(false);
 		
@@ -125,7 +169,10 @@ public class YahtzeeGUI implements ActionListener {
 		buttons[20][0].setEnabled(false);
 	}
 	
-	public void turn(){		
+	/**
+	 * 
+	 */
+	public void turn() {		
 		Dice dice = new Dice();
 		int ones = 0;
 		int twos = 0;
@@ -134,11 +181,11 @@ public class YahtzeeGUI implements ActionListener {
 		int fives = 0;
 		int sixes = 0;
 		
-		for(int k = 0; k < 5; k++){
-			rolls[k] = dice.Roll();
+		for (int k = 0; k < 5; k++) {
+			rolls[k] = dice.roll();
 		}
 		
-		for(int j = 0; j < 2; j++){
+		for (int j = 0; j < 2; j++) {
 			Object[] inputFields = {"Reroll " + rolls[0] + "?", checkBox1,
 					"Reroll " + rolls[1] + "?", checkBox2,
 					"Reroll " + rolls[2] + "?", checkBox3, "Reroll " + rolls[3] + "?", checkBox4,
@@ -148,36 +195,33 @@ public class YahtzeeGUI implements ActionListener {
 					JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
 			
 			if (checkBox1.isSelected()) {
-				rolls[0] = dice.Roll();
+				rolls[0] = dice.roll();
 			}
 			if (checkBox2.isSelected()) {
-				rolls[1] = dice.Roll();
+				rolls[1] = dice.roll();
 			}
 			if (checkBox3.isSelected()) {
-				rolls[2] = dice.Roll();
+				rolls[2] = dice.roll();
 			}
 			if (checkBox4.isSelected()) {
-				rolls[3] = dice.Roll();
+				rolls[3] = dice.roll();
 			}
 			if (checkBox5.isSelected()) {
-				rolls[4] = dice.Roll();
+				rolls[4] = dice.roll();
 			}
-			
-			Object[] rollMessage = {"You rolled a " +
-					rolls[0] + ", " +
-					rolls[1] + ", " +
-					rolls[2] + ", " + 
-					rolls[3] + ", " +
-					rolls[4] };
+			Object[] rollMessage = {"You rolled a " 
+					+ rolls[0] + ", " 
+					+ rolls[1] + ", " 
+					+ rolls[2] + ", " 
+					+ rolls[3] + ", " 
+					+ rolls[4] };
 
 			JOptionPane.showConfirmDialog(null, rollMessage, "Player" + playerturn + " turn",
-					JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-			
-			
+					JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);	
 		}
 			for (int i = 0; i < 5; i++) {
 
-				if (rolls[i] == 1 ) {
+				if (rolls[i] == 1) {
 					ones += 1;
 				}
 				if (rolls[i] == 2) {
@@ -193,7 +237,7 @@ public class YahtzeeGUI implements ActionListener {
 					fives += 1;
 				}
 				if (rolls[i] == 6) {
-					sixes +=1;
+					sixes += 1;
 				}
 			}
 				players[playerturn - 1].setOnes(ones);
@@ -213,34 +257,23 @@ public class YahtzeeGUI implements ActionListener {
 				
 				players[playerturn - 1].setSixes(sixes);
 				buttons[6][playerturn].setText(Integer.toString(players[playerturn - 1].getSixes()));
-		
-				
-		
-		if(playerturn == size){
+			
+		if (playerturn == size) {
 			playerturn = 1;
-		}
-		else{
+		} else {
 			playerturn += 1;
-		}
-		
+		}		
 		Object[] nextturn = {"It's now player " + playerturn + "'s turn"};
 		
 		JOptionPane.showConfirmDialog(null, nextturn , "Player " + playerturn + "'s turn",
-				JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-		
-		
-	}
+				JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);	}  
 	
-	 
-       
-        
-        
-        public void actionPerformed(ActionEvent evt)
-        {
-        	if(buttons[1][playerturn].isSelected()){
+	/**
+	 * @param evt standard event listener 
+	 */
+	public void actionPerformed(ActionEvent evt) {
+        	if (buttons[1][playerturn].isSelected()) {
         		buttons[1][playerturn].setEnabled(false);
-        	}
-        	
-        	
+        	} 
 		}
-	}
+}
