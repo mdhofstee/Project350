@@ -1,7 +1,7 @@
 package project.cis350;
 
 /**
- * 
+ *
  * @author Hofstee Laptop
  * A class to provide return and other functions of each player.
  */
@@ -422,10 +422,79 @@ public class Player {
 	
 	/**
 	 * 
+	 */
+	public void setHaveLgStraight() {
+		this.haveLgStraight = true;
+	}
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getLgStraight() {
+		return lgStraight;
+	}
+	
+	/**
+	 * 
+	 * @return 
+	 */
+	public boolean getHaveLgStraight() {
+		return haveLgStraight;
+	}
+	
+	/**
+	 * 
+	 */
+	public void setLgStraight() {
+		if (getHaveLgStraight()) {
+			this.lgStraight = LGSTRAIGHT;
+		} else {
+			this.lgStraight = 0;
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	public void setHaveYahtzee() {
+		this.haveYahtzee = true;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getYahtzee() {
+		return yahtzee;
+	}
+	
+	/**
+	 * 
+	 * @return 
+	 */
+	public boolean getHaveYahtzee() {
+		return haveYahtzee;
+	}
+	
+	/**
+	 * 
+	 */
+	public void setYahtzee() {
+		if (getHaveYahtzee()) {
+			this.yahtzee = YAHTZEE;
+		} else {
+			this.smStraight = 0;
+		}
+	}
+	
+	/**
+	 * 
 	 * @return
 	 */
 	public int getExtraYahtzee() {
-		return extraYahtzee;
+		return extraYahtzee * EXTRAYAHTZEE;
 	}
 	
 	/**
