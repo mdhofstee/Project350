@@ -530,10 +530,13 @@ public class Player {
 	}
 	
 	/**
-	 * 
+	 * Sets the bottom Score of the 
 	 * @param bottomScoreTemp
 	 */
 	public void setBottomScore(int bottomScoreTemp) {
+		bottomScoreTemp = getThreeKind() + getFourKind() + 
+				getFullHouse() + getSmStraight() + getLgStraight() + 
+				getYahtzee() + getExtraYahtzee() + getChance();
 		this.bottomScore = bottomScoreTemp;
 	}
 	
@@ -548,7 +551,7 @@ public class Player {
 	/**
 	 * sets the total Score in the game.
 	 * @param totalScoreTemp the value for a player of their current total 
-	 * score
+	 * score.
 	 */
 	public void setTotalScore(int totalScoreTemp) {
 		totalScoreTemp = getBottomScore() + getTopScore();
