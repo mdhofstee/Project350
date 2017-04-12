@@ -1,18 +1,14 @@
 package project350;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.border.Border;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -32,19 +28,11 @@ public class YahtzeeGUI implements ActionListener {
 	/**
 	 * 
 	 */
-	private String[] options = {"Dice 1", "Dice 2", "Dice 3", "Dice 4", "Dice 5" };
-	/**
-	 * 
-	 */
 	private int size = Integer.parseInt(JOptionPane.showInputDialog("Number of Players?"));
 	/**
 	 * 
 	 */
 	private JButton[][] buttons  = new JButton[21][size + 1];
-	/**
-	 * 
-	 */
-	private Border border = BorderFactory.createLineBorder(Color.BLACK);
 	/**
 	 * 
 	 */
@@ -96,6 +84,7 @@ public class YahtzeeGUI implements ActionListener {
 	/**
 	 * 
 	 */
+	@SuppressWarnings("unused")
 	private Boolean nextTurn = false;
 	/**
 	 * 
@@ -241,6 +230,7 @@ public class YahtzeeGUI implements ActionListener {
 	 * 
 	 */
 	public void turn() {		
+		
 		Dice dice = new Dice();
 		
 		Object[] nextturn = {"It's now player " + playerturn + "'s turn"};
@@ -309,46 +299,46 @@ public class YahtzeeGUI implements ActionListener {
 				buttons[1][playerturn].setText(Integer.toString(players[playerturn - 1].getOnes()));
 				
 				players[playerturn - 1].getTwos();
-				buttons[2][playerturn].setText(Integer.toString(players[playerturn - 1].getTwos()));
+				buttons[2][playerturn].setText(Integer.toString(players[playerturn - 1].getTwos() * 2));
 				
 				players[playerturn - 1].getThrees();
-				buttons[3][playerturn].setText(Integer.toString(players[playerturn - 1].getThrees()));
+				buttons[3][playerturn].setText(Integer.toString(players[playerturn - 1].getThrees() * 3));
 				
 				players[playerturn - 1].getFours();
-				buttons[4][playerturn].setText(Integer.toString(players[playerturn - 1].getFours()));
+				buttons[4][playerturn].setText(Integer.toString(players[playerturn - 1].getFours() * 4));
 				
 				players[playerturn - 1].getFives();
-				buttons[5][playerturn].setText(Integer.toString(players[playerturn - 1].getFives()));
+				buttons[5][playerturn].setText(Integer.toString(players[playerturn - 1].getFives() * 5));
 				
 				players[playerturn - 1].getSixes();
-				buttons[6][playerturn].setText(Integer.toString(players[playerturn - 1].getSixes()));
-				
-				
-				
+				buttons[6][playerturn].setText(Integer.toString(players[playerturn - 1].getSixes() * 6));		
 			
-		if (playerturn == size) {
-			playerturn = 1;
-		} else {
-			playerturn += 1;
-			nextTurn = false;
-		}		
-			
+				nextTurn = false;
+				System.out.println(playerturn);
 	}  
 	/**
 	 * @param arg0 standard event listener 
 	 */
 	@Override
 	public void actionPerformed(final ActionEvent arg0) {
-		if (arg0.getSource() ==  buttons[1][1]){
+		if (arg0.getSource() ==  buttons[1][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
 			nextTurn = true;
 			turn();
+			
 		}
 		
 	}
-	/*
+	/**
 	 * listens for actions in the Jmenubar.
+	 * @inheritDoc inherits from MenuListener 
 	 */
-	class SampleMenuListener implements MenuListener{
+	class SampleMenuListener implements MenuListener {
 
 		@Override
 		public void menuCanceled(final MenuEvent e) {
@@ -365,17 +355,48 @@ public class YahtzeeGUI implements ActionListener {
 		@Override
 		public void menuSelected(final MenuEvent e) {
 			if (e.getSource() == save) {
-				for (int i = 0; i < players.length; i++) {
-					fakeplayers[i] = players[i];
+					savePlayer(players[playerturn - 1]);
 				}
-				System.out.println(fakeplayers[0]);
-			}
 			if (e.getSource() == load) {
-				for (int i = 0; i < players.length; i++) {
-					players[i] = fakeplayers[i];
-				}
+					loadPlayer(fakeplayers[playerturn - 1]);
 			}
 			
 		}
+		/**
+		 * 
+		 * @param temp player you want to save
+		 */
+		public void savePlayer(final Player temp) {
+			fakeplayers[playerturn - 1].setOnes(temp.getOnes());
+			fakeplayers[playerturn - 1].setTwos(temp.getTwos());
+			fakeplayers[playerturn - 1].setThrees(temp.getThrees());
+			fakeplayers[playerturn - 1].setFours(temp.getFours());
+			fakeplayers[playerturn - 1].setFives(temp.getFives());
+			fakeplayers[playerturn - 1].setSixes(temp.getSixes());
+			fakeplayers[playerturn - 1].setTopSubScore();
+			System.out.println(fakeplayers[playerturn - 1].getOnes());
+		}
+		
+		/**
+		 * @param temp player you want to load from
+		 * 
+		 */
+		public void loadPlayer(final Player temp) {
+			players[playerturn - 1].setOnes(temp.getOnes());
+			players[playerturn - 1].setTwos(temp.getTwos());
+			players[playerturn - 1].setThrees(temp.getThrees());
+			players[playerturn - 1].setFours(temp.getFours());
+			players[playerturn - 1].setFives(temp.getFives());
+			players[playerturn - 1].setSixes(temp.getSixes());
+			players[playerturn - 1].setTopSubScore();
+			
+			buttons[1][playerturn].setText(Integer.toString(players[playerturn - 1].getOnes()));
+			buttons[2][playerturn].setText(Integer.toString(players[playerturn - 1].getTwos() * 2));
+			buttons[3][playerturn].setText(Integer.toString(players[playerturn - 1].getThrees() * 3));
+			buttons[4][playerturn].setText(Integer.toString(players[playerturn - 1].getFours() * 4));
+			buttons[5][playerturn].setText(Integer.toString(players[playerturn - 1].getFives() * 5));
+			buttons[6][playerturn].setText(Integer.toString(players[playerturn - 1].getSixes() * 6));
+		}
 	}
 }
+
