@@ -1,4 +1,4 @@
-package project.cis350;
+package project350;
 
 /**
  *
@@ -7,86 +7,78 @@ package project.cis350;
  */
 public class Player {
 	/**
-	 * interger value to return value of Ones.
+	 * integer value to return value of Ones.
 	 */
 	private int ones;
 	/**
-	 * interger value to return value of Twos.
+	 * integer value to return value of Twos.
 	 */
 	private int twos;
 	/**
-	 * interger value to return value of Threes.
+	 * integer value to return value of Threes.
 	 */
 	private int threes;
 	/**
-	 * interger value to return value of Fours.
+	 * integer value to return value of Fours.
 	 */
 	private int fours;
 	/**
-	 * interger value to return value of Fives.
+	 * integer value to return value of Fives.
 	 */
 	private int fives;
 	/**
-	 * interger value to return value of Sixes.
+	 * integer value to return value of Sixes.
 	 */
 	private int sixes;
 	/**
-	 * interger value to return value of Top Sub Score.
+	 * integer value to return value of Top Sub Score.
 	 */
 	private int topSubScore;
 	/**
-	 * interger value to return value of Bonus.
+	 * integer value to return value of Bonus.
 	 */
 	private int bonus;
 	/**
-	 * interger value to return value of Top Score.
+	 * integer value to return value of Top Score.
 	 */
 	private int topScore;
 	/**
-	 * interger value to return value of Three of Kind.
+	 * integer value to return value of Three of Kind.
 	 */
 	private int threeKind;
 	/**
-	 * interger value to return value of Four of Kind.
+	 * integer value to return value of Four of Kind.
 	 */
 	private int fourKind;
 	/**
-	 * interger value to return value of Full House.
+	 * integer value to return value of Full House.
 	 */
 	private int fullHouse;
 	/**
-	 * interger value to return value of Small Straight.
+	 * integer value to return value of Small Straight.
 	 */
 	private int smStraight;
 	/**
-	 * interger value to return value of Large Straight.
+	 * integer value to return value of Large Straight.
 	 */
 	private int lgStraight;
 	/**
-	 * interger value to return value of Yahtzee.
+	 * integer value to return value of Yahtzee.
 	 */
 	private int yahtzee;
 	/**
-	 * interger to store number of Extra Yahtzee.
-	 */
-	private int numberExtraYahtzee;
-	/**
-	 * interger value to return value of Extra Yahtzees.
-	 */
-	private int extraYahtzee;
-	/**
-	 * interger value to return value of Chance.
+	 * integer value to return value of Chance.
 	 */
 	private int chance;
 	/**
-	 * interger value to return value of Bottom Score.
+	 * integer value to return value of bottom Score.
 	 */
+	@SuppressWarnings("unused")
 	private int bottomScore;
 	/**
-	 * interger value to return value of Total Score.
+	 * integer value to return value of top Score.
 	 */
 	private int totalScore;
-	
 	/**
 	 * Value needed for bonus minus one.
 	 */
@@ -111,10 +103,6 @@ public class Player {
 	 * Value of Yahtzee.
 	 */
 	private static final int YAHTZEE = 50;
-	/**
-	 * Value of Extra Yahtzee.
-	 */
-	private static final int EXTRAYAHTZEE = 100;
 	/**
 	 * Value of Twos.
 	 */
@@ -159,6 +147,7 @@ public class Player {
 	
 	/**
 	 * 
+	 * @return score of ones dice
 	 */
 	public int getOnes() {
 		return ones;
@@ -166,14 +155,15 @@ public class Player {
 	
 	/**
 	 * 
+	 * @param onesTemp total number of ones dice
 	 */
-	public void setOnes(int onesTemp) {
+	public void setOnes(final int onesTemp) {
 		this.ones = onesTemp;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return score of twos dice
 	 */
 	public int getTwos() {
 		return twos;
@@ -181,15 +171,15 @@ public class Player {
 	
 	/**
 	 * 
-	 * @param twosTemp
+	 * @param twosTemp total number of twos dice
 	 */
-	public void setTwos(int twosTemp) {
-		this.twos = twosTemp * TWO;
+	public void setTwos(final int twosTemp) {
+		this.twos = twosTemp;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return score of threes dice
 	 */
 	public int getThrees() {
 		return threes;
@@ -197,15 +187,15 @@ public class Player {
 	
 	/**
 	 * 
-	 * @param threesTemp
+	 * @param threesTemp total number of threes dice
 	 */
-	public void setThrees(int threesTemp) {
-		this.threes = threesTemp * THREE;
+	public void setThrees(final int threesTemp) {
+		this.threes = threesTemp;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return score of fours dice
 	 */
 	public int getFours() {
 		return fours;
@@ -213,15 +203,15 @@ public class Player {
 	
 	/**
 	 * 
-	 * @param foursTemp
+	 * @param foursTemp total number of fours dice
 	 */
-	public void setFours(int foursTemp) {
-		this.fours = foursTemp * FOUR;
+	public void setFours(final int foursTemp) {
+		this.fours = foursTemp;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return score of fives dice
 	 */
 	public int getFives() {
 		return fives;
@@ -229,15 +219,15 @@ public class Player {
 	
 	/**
 	 * 
-	 * @param fivesTemp
+	 * @param fivesTemp total number of fives dice
 	 */
-	public void setFives(int fivesTemp) {
-		this.fives = fivesTemp * FIVE;
+	public void setFives(final int fivesTemp) {
+		this.fives = fivesTemp;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return score of sixes dice
 	 */
 	public int getSixes() {
 		return sixes;
@@ -245,31 +235,30 @@ public class Player {
 	
 	/**
 	 * 
-	 * @param sixesTemp
+	 * @param sixesTemp total number of sixes dice
 	 */
-	public void setSixes(int sixesTemp) {
-		this.sixes = sixesTemp * SIX;
+	public void setSixes(final int sixesTemp) {
+		this.sixes = sixesTemp;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return total top score 
 	 */
 	public int getTopSubScore() {
 		return topSubScore;
 	}
-	
 	/**
 	 * 
 	 */
 	public void setTopSubScore() {
-		this.topSubScore = getOnes() + getTwos() + getThrees() 
-			+ getFours() + getFives() + getSixes();
+		this.topSubScore = getOnes() + (getTwos() * TWO) + (getThrees() * THREE)
+			+ (getFours() * FOUR) + (getFives() * FIVE) + (getSixes() * SIX);
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return bonus points int
 	 */
 	public int getBonus() {
 		return bonus;
@@ -277,7 +266,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
+	 * @return bonus points boolean
 	 */
 	public boolean getHaveBonus() {
 		return haveBonus;
@@ -307,7 +296,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
+	 * @return top score of board
 	 */
 	public int getTopScore() {
 		return topScore;
@@ -322,7 +311,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
+	 * @return if there is a threeofkind
 	 */
 	public int getThreeKind() {
 		return threeKind;
@@ -330,15 +319,15 @@ public class Player {
 	
 	/**
 	 * 
-	 * @param threeKindTemp
+	 * @param threeKindTemp sets threeofakind score
 	 */
-	public void setThreeKind(int threeKindTemp) {
+	public void setThreeKind(final int threeKindTemp) {
 		this.threeKind = threeKindTemp;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return if there is a fourofakind
 	 */
 	public int getFourKind() {
 		return fourKind;
@@ -346,15 +335,15 @@ public class Player {
 	
 	/**
 	 * 
-	 * @param fourKindTemp
+	 * @param fourKindTemp sets fourofakind score
 	 */
-	public void setFourKind(int fourKindTemp) {
+	public void setFourKind(final int fourKindTemp) {
 		this.fourKind = fourKindTemp;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return fullhouse points int
 	 */
 	public int getFullHouse() {
 		return fullHouse;
@@ -362,7 +351,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
+	 * @return fullhouse points boolean
 	 */
 	public boolean getHaveFullHouse() {
 		return haveFullHouse;
@@ -388,7 +377,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
+	 * @return smstraight points int
 	 */
 	public int getSmStraight() {
 		return smStraight;
@@ -396,7 +385,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
+	 * @return smstraight points boolean
 	 */
 	public boolean getHaveSmStraight() {
 		return haveSmStraight;
@@ -430,7 +419,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
+	 * @return lgstraight score int
 	 */
 	public int getLgStraight() {
 		return lgStraight;
@@ -438,7 +427,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return 
+	 * @return lgstraight score boolean 
 	 */
 	public boolean getHaveLgStraight() {
 		return haveLgStraight;
@@ -464,7 +453,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
+	 * @return yahtzee score int
 	 */
 	public int getYahtzee() {
 		return yahtzee;
@@ -472,7 +461,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return 
+	 * @return yahtzee score boolean
 	 */
 	public boolean getHaveYahtzee() {
 		return haveYahtzee;
@@ -491,23 +480,7 @@ public class Player {
 	
 	/**
 	 * 
-	 * @return
-	 */
-	public int getExtraYahtzee() {
-		return extraYahtzee * EXTRAYAHTZEE;
-	}
-	
-	/**
-	 * 
-	 * @param extraYahtzeeTemp
-	 */
-	public void setExtraYahtzee(int extraYahtzeeTemp) {
-		this.extraYahtzee = extraYahtzeeTemp;
-	}
-	
-	/**
-	 * 
-	 * @return
+	 * @return chance score int
 	 */
 	public int getChance() {
 		return chance;
@@ -515,29 +488,20 @@ public class Player {
 	
 	/**
 	 * 
-	 * @param chanceTemp
+	 * @param chanceTemp set chance score
 	 */
-	public void setChance(int chanceTemp) {
+	public void setChance(final int chanceTemp) {
 		this.chance = chanceTemp;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Sets the bottom Score of the board.
+
 	 */
-	public int getBottomScore() {
-		return bottomScore;
-	}
-	
-	/**
-	 * Sets the bottom Score of the 
-	 * @param bottomScoreTemp
-	 */
-	public void setBottomScore(int bottomScoreTemp) {
-		bottomScoreTemp = getThreeKind() + getFourKind() + 
-				getFullHouse() + getSmStraight() + getLgStraight() + 
-				getYahtzee() + getExtraYahtzee() + getChance();
-		this.bottomScore = bottomScoreTemp;
+	public void getBottomScore() { 
+		bottomScore = getThreeKind() + getFourKind() 
+		+ getFullHouse() + getSmStraight() + getLgStraight() 
+		+ getYahtzee() + getChance();
 	}
 	
 	/**
@@ -546,16 +510,5 @@ public class Player {
 	 */
 	public final int getTotalScore() {
 		return totalScore;
-	}
-	
-	/**
-	 * sets the total Score in the game.
-	 * @param totalScoreTemp the value for a player of their current total 
-	 * score.
-	 */
-	public void setTotalScore(int totalScoreTemp) {
-		totalScoreTemp = getBottomScore() + getTopScore();
-		this.totalScore = totalScoreTemp;
-	}
-	
+	}	
 }
