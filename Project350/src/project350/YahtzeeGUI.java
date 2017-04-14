@@ -48,6 +48,10 @@ public class YahtzeeGUI implements ActionListener {
 	/**
 	 * 
 	 */
+	private int tempOnes, tempTwos, tempThrees, tempFours, tempFives, tempSixes;
+	/**
+	 * 
+	 */
 	private Player[] players = new Player[size];
 	/**
 	 * 
@@ -277,40 +281,30 @@ public class YahtzeeGUI implements ActionListener {
 			for (int i = 0; i < 5; i++) {
 
 				if (rolls[i] == 1) {
-					players[playerturn - 1].setOnes(players[playerturn - 1].getOnes() + 1);
+					tempOnes += 1;
 				}
 				if (rolls[i] == 2) {
-					players[playerturn - 1].setTwos(players[playerturn - 1].getTwos() + 1);
+					tempTwos += 1;
 				}
 				if (rolls[i] == 3) {
-					players[playerturn - 1].setThrees(players[playerturn - 1].getThrees() + 1);
+					tempThrees += 1;
 				}
 				if (rolls[i] == 4) {
-					players[playerturn - 1].setFours(players[playerturn - 1].getFours() + 1);
+					tempFours += 1;
 				}
 				if (rolls[i] == 5) {
-					players[playerturn - 1].setFives(players[playerturn - 1].getFives() + 1);
+					tempFives += 1;
 				}
 				if (rolls[i] == 6) {
-					players[playerturn - 1].setSixes(players[playerturn - 1].getSixes() + 1);
+					tempSixes += 1;
 				}
 			}
-				players[playerturn - 1].getOnes();
+			
 				buttons[1][playerturn].setText(Integer.toString(players[playerturn - 1].getOnes()));
-				
-				players[playerturn - 1].getTwos();
 				buttons[2][playerturn].setText(Integer.toString(players[playerturn - 1].getTwos() * 2));
-				
-				players[playerturn - 1].getThrees();
 				buttons[3][playerturn].setText(Integer.toString(players[playerturn - 1].getThrees() * 3));
-				
-				players[playerturn - 1].getFours();
 				buttons[4][playerturn].setText(Integer.toString(players[playerturn - 1].getFours() * 4));
-				
-				players[playerturn - 1].getFives();
 				buttons[5][playerturn].setText(Integer.toString(players[playerturn - 1].getFives() * 5));
-				
-				players[playerturn - 1].getSixes();
 				buttons[6][playerturn].setText(Integer.toString(players[playerturn - 1].getSixes() * 6));		
 			
 				nextTurn = false;
@@ -331,7 +325,168 @@ public class YahtzeeGUI implements ActionListener {
 			nextTurn = true;
 			turn();
 			
+			if(players[playerturn].getOnes() == 0){
+				
+			}
+			
 		}
+		
+		if (arg0.getSource() ==  buttons[2][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[3][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[4][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[5][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[6][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[10][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[11][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[12][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[13][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[14][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[15][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[16][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
+		if (arg0.getSource() ==  buttons[17][playerturn]) {
+			if (playerturn == size) {
+				playerturn = 1;
+			} else {
+				playerturn += 1;
+				
+			}
+			nextTurn = true;
+			turn();
+			
+		}
+		
 		
 	}
 	/**
