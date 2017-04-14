@@ -495,11 +495,11 @@ public class Player {
 	}
 	
 	/**
-	 * Sets the bottom Score of the board.
-
+	 *
+	 * @return the bottom Score of the board
 	 */
-	public void getBottomScore() { 
-		bottomScore = getThreeKind() + getFourKind() 
+	public int getBottomScore() { 
+		return getThreeKind() + getFourKind() 
 		+ getFullHouse() + getSmStraight() + getLgStraight() 
 		+ getYahtzee() + getChance();
 	}
