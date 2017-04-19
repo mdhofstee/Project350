@@ -1,11 +1,11 @@
-package project.cis350;
+package project350;
 
 import java.util.Random;
 
 /**
  * Dice class for the 5 dice in the game so each is independent.
  * @author Hofstee and Overman
- *
+ * 
  */
 public class Dice {
 
