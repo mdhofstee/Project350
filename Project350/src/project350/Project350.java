@@ -1,8 +1,8 @@
-package project.cis350;
+package project350;
 /**
- * 
+ * Main class of the game, starts the game.
  * @author Hofstee Laptop
- * Main class.
+ * 
  */
 public class Project350 {
 	/**
@@ -15,8 +15,5 @@ public class Project350 {
 		YahtzeeGUI board = new YahtzeeGUI();
 		Yahtzee.run(game, board);		
 	}
-	/**
-	 * This is stop other classes form accessing this project.
-	 */
-	protected Project350() { }
 }
+
