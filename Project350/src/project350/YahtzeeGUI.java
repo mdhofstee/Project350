@@ -5,10 +5,12 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -16,9 +18,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 /**
- * 
+ * Creates and fills the Yahtzee board with Jcomponents.
  * @author Overman, Hofstee
- *
+ * 
  */
 public class YahtzeeGUI implements ActionListener {
 	/**
@@ -48,10 +50,6 @@ public class YahtzeeGUI implements ActionListener {
 	/**
 	 * 
 	 */
-	private int tempOnes, tempTwos, tempThrees, tempFours, tempFives, tempSixes;
-	/**
-	 * 
-	 */
 	private Player[] players = new Player[size];
 	/**
 	 * 
@@ -64,7 +62,11 @@ public class YahtzeeGUI implements ActionListener {
 	/**
 	 * 
 	 */
-	private JMenu save, load;
+	private JMenu save, load, changeColor;
+	/**
+	 * 
+	 */
+	private JMenuItem red, blue, green, black;
 	/**
 	 * 
 	 */
@@ -88,6 +90,10 @@ public class YahtzeeGUI implements ActionListener {
 	/**
 	 * 
 	 */
+	private Color colorred = Color.red;
+	private Color colorgreen = Color.green;
+	private Color colorblue = Color.blue;
+	private Color colorblack = Color.black; 
 	@SuppressWarnings("unused")
 	private Boolean nextTurn = false;
 	/**
@@ -107,13 +113,29 @@ public class YahtzeeGUI implements ActionListener {
 		
 		menuBar = new JMenuBar();
 		save = new JMenu("Save");
-		save.addMenuListener(new SampleMenuListener());
+		save.addActionListener(this);
 		save.setMnemonic(KeyEvent.VK_S);
 		load = new JMenu("Load");
-		load.addMenuListener(new SampleMenuListener());
+		load.addActionListener(this);
 		load.setMnemonic(KeyEvent.VK_L);
+		red = new JMenuItem("red");
+		red.addActionListener(this);
+		blue = new JMenuItem("blue");
+		blue.addActionListener(this);
+		green = new JMenuItem("green");
+		green.addActionListener(this);
+		black = new JMenuItem("black");
+		black.addActionListener(this);
+		changeColor = new JMenu("Change Background");
+		changeColor.addActionListener(this);
+		changeColor.setMnemonic(KeyEvent.VK_S);
+		changeColor.add(red);
+		changeColor.add(blue);
+		changeColor.add(green);
+		changeColor.add(black);
 		menuBar.add(save);
 		menuBar.add(load);
+		menuBar.add(changeColor);
 		guiFrame.setJMenuBar(menuBar);
 		
 		scoreBoxes();
@@ -280,24 +302,24 @@ public class YahtzeeGUI implements ActionListener {
 		}
 			for (int i = 0; i < 5; i++) {
 
-				if (rolls[i] == 1) {
-					tempOnes += 1;
-				}
-				if (rolls[i] == 2) {
-					tempTwos += 1;
-				}
-				if (rolls[i] == 3) {
-					tempThrees += 1;
-				}
-				if (rolls[i] == 4) {
-					tempFours += 1;
-				}
-				if (rolls[i] == 5) {
-					tempFives += 1;
-				}
-				if (rolls[i] == 6) {
-					tempSixes += 1;
-				}
+ 				if (rolls[i] == 1) {
+ 					players[playerturn - 1].setOnes(players[playerturn - 1].getOnes() + 1);
+ 				}
+ 				if (rolls[i] == 2) {
+ 					players[playerturn - 1].setTwos(players[playerturn - 1].getTwos() + 1);
+ 				}
+ 				if (rolls[i] == 3) {
+ 					players[playerturn - 1].setThrees(players[playerturn - 1].getThrees() + 1);
+ 				}
+ 				if (rolls[i] == 4) {
+ 					players[playerturn - 1].setFours(players[playerturn - 1].getFours() + 1);
+ 				}
+ 				if (rolls[i] == 5) {
+ 					players[playerturn - 1].setFives(players[playerturn - 1].getFives() + 1);
+ 				}
+ 				if (rolls[i] == 6) {
+ 					players[playerturn - 1].setSixes(players[playerturn - 1].getSixes() + 1);
+ 				}
 			}
 			
 				buttons[1][playerturn].setText(Integer.toString(players[playerturn - 1].getOnes()));
@@ -325,9 +347,6 @@ public class YahtzeeGUI implements ActionListener {
 			nextTurn = true;
 			turn();
 			
-			if(players[playerturn].getOnes() == 0){
-				
-			}
 			
 		}
 		
@@ -487,71 +506,82 @@ public class YahtzeeGUI implements ActionListener {
 			
 		}
 		
-		
+		if (arg0.getSource() == save) {
+			savePlayer(players[playerturn - 1]);
+		}
+		if (arg0.getSource() == load) {
+			loadPlayer(fakeplayers[playerturn - 1]);
+		}
+		if(arg0.getSource() == red){
+			guiFrame.setBackground(colorred);
+			for (int r = 0; r < 21; r++) {
+	            for (int c = 0; c < size + 1; c++) {         
+	                buttons[r][c].setBackground(colorred);
+	            }
+			}
+		}
+		if(arg0.getSource() == blue){
+			guiFrame.setBackground(colorblue);
+			for (int r = 0; r < 21; r++) {
+	            for (int c = 0; c < size + 1; c++) {         
+	                buttons[r][c].setBackground(colorblue);
+	            }
+			}
+		}
+		if(arg0.getSource() == green){
+			guiFrame.setBackground(colorgreen);
+			for (int r = 0; r < 21; r++) {
+	            for (int c = 0; c < size + 1; c++) {         
+	                buttons[r][c].setBackground(colorgreen);
+	            }
+			}
+		}
+		if(arg0.getSource() == black){
+			guiFrame.setBackground(colorblack);
+			for (int r = 0; r < 21; r++) {
+	            for (int c = 0; c < size + 1; c++) {         
+	                buttons[r][c].setBackground(colorblack);
+	            }
+			}
+		}
 	}
 	/**
-	 * listens for actions in the Jmenubar.
-	 * @inheritDoc inherits from MenuListener 
+	 * 
+	 * @param temp player you want to save
 	 */
-	class SampleMenuListener implements MenuListener {
-
-		@Override
-		public void menuCanceled(final MenuEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void menuDeselected(final MenuEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void menuSelected(final MenuEvent e) {
-			if (e.getSource() == save) {
-					savePlayer(players[playerturn - 1]);
-				}
-			if (e.getSource() == load) {
-					loadPlayer(fakeplayers[playerturn - 1]);
-			}
-			
-		}
-		/**
-		 * 
-		 * @param temp player you want to save
-		 */
-		public void savePlayer(final Player temp) {
-			fakeplayers[playerturn - 1].setOnes(temp.getOnes());
-			fakeplayers[playerturn - 1].setTwos(temp.getTwos());
-			fakeplayers[playerturn - 1].setThrees(temp.getThrees());
-			fakeplayers[playerturn - 1].setFours(temp.getFours());
-			fakeplayers[playerturn - 1].setFives(temp.getFives());
-			fakeplayers[playerturn - 1].setSixes(temp.getSixes());
-			fakeplayers[playerturn - 1].setTopSubScore();
-			System.out.println(fakeplayers[playerturn - 1].getOnes());
-		}
-		
-		/**
-		 * @param temp player you want to load from
-		 * 
-		 */
-		public void loadPlayer(final Player temp) {
-			players[playerturn - 1].setOnes(temp.getOnes());
-			players[playerturn - 1].setTwos(temp.getTwos());
-			players[playerturn - 1].setThrees(temp.getThrees());
-			players[playerturn - 1].setFours(temp.getFours());
-			players[playerturn - 1].setFives(temp.getFives());
-			players[playerturn - 1].setSixes(temp.getSixes());
-			players[playerturn - 1].setTopSubScore();
-			
-			buttons[1][playerturn].setText(Integer.toString(players[playerturn - 1].getOnes()));
-			buttons[2][playerturn].setText(Integer.toString(players[playerturn - 1].getTwos() * 2));
-			buttons[3][playerturn].setText(Integer.toString(players[playerturn - 1].getThrees() * 3));
-			buttons[4][playerturn].setText(Integer.toString(players[playerturn - 1].getFours() * 4));
-			buttons[5][playerturn].setText(Integer.toString(players[playerturn - 1].getFives() * 5));
-			buttons[6][playerturn].setText(Integer.toString(players[playerturn - 1].getSixes() * 6));
-		}
+	public void savePlayer(final Player temp) {
+		fakeplayers[playerturn - 1].setOnes(temp.getOnes());
+		fakeplayers[playerturn - 1].setTwos(temp.getTwos());
+		fakeplayers[playerturn - 1].setThrees(temp.getThrees());
+		fakeplayers[playerturn - 1].setFours(temp.getFours());
+		fakeplayers[playerturn - 1].setFives(temp.getFives());
+		fakeplayers[playerturn - 1].setSixes(temp.getSixes());
+		fakeplayers[playerturn - 1].setTopSubScore();
+		System.out.println(fakeplayers[playerturn - 1].getOnes());
 	}
-}
+	/**
+	 * @param temp player you want to load from
+	 * 
+	 */
+	public void loadPlayer(final Player temp) {
+		players[playerturn - 1].setOnes(temp.getOnes());
+		players[playerturn - 1].setTwos(temp.getTwos());
+		players[playerturn - 1].setThrees(temp.getThrees());
+		players[playerturn - 1].setFours(temp.getFours());
+		players[playerturn - 1].setFives(temp.getFives());
+		players[playerturn - 1].setSixes(temp.getSixes());
+		players[playerturn - 1].setTopSubScore();
+		
+		buttons[1][playerturn].setText(Integer.toString(players[playerturn - 1].getOnes()));
+		buttons[2][playerturn].setText(Integer.toString(players[playerturn - 1].getTwos() * 2));
+		buttons[3][playerturn].setText(Integer.toString(players[playerturn - 1].getThrees() * 3));
+		buttons[4][playerturn].setText(Integer.toString(players[playerturn - 1].getFours() * 4));
+		buttons[5][playerturn].setText(Integer.toString(players[playerturn - 1].getFives() * 5));
+		buttons[6][playerturn].setText(Integer.toString(players[playerturn - 1].getSixes() * 6));
+	}
+		
+		
+	}
+
+
 
