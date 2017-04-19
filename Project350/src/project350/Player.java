@@ -116,27 +116,6 @@ public class Player {
 	 */
 	private static final int EXTRAYAHTZEE = 100;
 	/**
-	 * Value of Twos.
-	 */
-	private static final int TWO = 2;
-	/**
-	 * Value of Threes.
-	 */
-	private static final int THREE = 3;
-	/**
-	 * Value of Fours.
-	 */
-	private static final int FOUR = 4;
-	/**
-	 * Value of Fives.
-	 */
-	private static final int FIVE = 5;
-	/**
-	 * Value of SIXES.
-	 */
-	private static final int SIX = 6;
-	
-	/**
 	 * Boolean to check for bonus.
 	 */
 	private boolean haveBonus = false;
@@ -186,7 +165,7 @@ public class Player {
 	 * @param twosTemp the number of twos that is rolled
 	 */
 	public void setTwos(int twosTemp) {
-		this.twos = twosTemp * TWO;
+		this.twos = twosTemp;
 	}
 
 	/**
@@ -202,7 +181,7 @@ public class Player {
 	 * @param threesTemp the number of threes that is rolled
 	 */
 	public void setThrees(int threesTemp) {
-		this.threes = threesTemp * THREE;
+		this.threes = threesTemp;
 	}
 
 	/**
@@ -218,7 +197,7 @@ public class Player {
 	 * @param foursTemp the number of fours that is rolled
 	 */
 	public void setFours(int foursTemp) {
-		this.fours = foursTemp * FOUR;
+		this.fours = foursTemp;
 	}
 
 	/**
@@ -234,7 +213,7 @@ public class Player {
 	 * @param fivesTemp the number of fives that is rolled
 	 */
 	public void setFives(int fivesTemp) {
-		this.fives = fivesTemp * FIVE;
+		this.fives = fivesTemp;
 	}
 
 	/**
@@ -250,7 +229,7 @@ public class Player {
 	 * @param sixesTemp the number of sixes that is rolled
 	 */
 	public void setSixes(int sixesTemp) {
-		this.sixes = sixesTemp * SIX;
+		this.sixes = sixesTemp;
 	}
 
 	/**
