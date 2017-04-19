@@ -1,9 +1,9 @@
 package project350;
 
 /**
- *
- * @author Hofstee Laptop
  * A class to provide return and other functions of each player.
+ * @author Hofstee Laptop
+ * 
  */
 public class Player {
 	/**
